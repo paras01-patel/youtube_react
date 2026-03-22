@@ -192,22 +192,50 @@ import { useState } from "react"
 
 
 
-function App(){
+// function App(){
   
 
-  const data={
-    name:'dhiraj',
-    work:'farming',
-    age:23,
-    city:'chhindwara'
-  }
+//   const data={
+//     name:'dhiraj',
+//     work:'farming',
+//     age:23,
+//     city:'chhindwara'
+//   }
 
-localStorage.setItem('data',JSON.stringify(data))    //convert object to string 
-const d=JSON.parse(localStorage.getItem('data'))
+// localStorage.setItem('data',JSON.stringify(data))    //convert object to string 
+// const d=JSON.parse(localStorage.getItem('data'))
+//   return(
+//     <>
+    
+//     </>
+//   )
+// }
+// export default App
+
+
+
+//API application program interface ...
+
+import axios from 'axios'
+
+//with fetch api 
+
+async function getdata(){
+  const res= await fetch('https://jsonplaceholder.typicode.com/todos/1')
+  console.log(res)
+}
+
+//with asios api 
+
+//  async function getdata(){
+//   const res=  await axios('https://jsonplaceholder.typicode.com/todos/1')
+
+// console.log(res)}
+
+function App(){
   return(
     <>
-    
-    </>
+    <button onClick={getdata}>click here</button></>
   )
 }
 export default App
