@@ -108,80 +108,105 @@ import { useState } from "react"
 
 
 
+// function App(){
+// const[title,settitle]=useState()
+// const[details,setdetails]=useState()
+// const[task,settask]=useState([])
+
+
+
+
+//   function submmit(e){
+//     e.preventDefault()
+//     const copytask=[...task]
+//     copytask.push({title,details})
+    
+//     settask(copytask)
+
+
+//     settitle('')
+//     setdetails('')
+    
+//   }
+
+
+//   function del(idx){
+//   const copytask = [...task]
+//   copytask.splice(idx,1)
+//   settask(copytask)
+// }
+//   return (
+
+//     <>
+
+//     <div className="parent">
+//       <div className="child1">
+//         <form onSubmit={(e)=>{submmit(e)}}>
+//           <h1> Add Notes</h1>
+//           <input 
+//           type="text"  
+//           placeholder="Enter your name" 
+//           className="inn"
+//           value={title}
+//           onChange={(e)=>{
+//             settitle(e.target.value)
+//           }}
+          
+//           />
+//           <br />  
+//           <input 
+//           type="text" 
+//           placeholder="Enter your notes"  
+//           className="innn"
+//           value={details}
+//           onChange={(e)=>{
+//             setdetails(e.target.value)
+//           }}
+        
+//           />
+//           <br />
+//           <button className="g">submit</button>
+//         </form>
+//       </div>
+
+//       <div className="child2">
+      
+//       {task.map(function(elem,idx){
+//         return <div key={idx} className="child3"><h1>{elem.title}</h1>
+//         <p>{elem.details}</p>
+//         <button onClick={()=>del(idx)}>delete </button></div>
+        
+//       })} 
+      
+      
+//       </div>
+      
+//     </div>
+//     </>
+//   )
+// }
+// export default App
+
+
+//local storege =there are 4 method (1.setitem 2. getitem 3.removeitem 4.clear)
+
+
+
 function App(){
-const[title,settitle]=useState()
-const[details,setdetails]=useState()
-const[task,settask]=useState([])
+  
 
-
-
-
-  function submmit(e){
-    e.preventDefault()
-    const copytask=[...task]
-    copytask.push({title,details})
-    
-    settask(copytask)
-
-
-    settitle('')
-    setdetails('')
-    
+  const data={
+    name:'dhiraj',
+    work:'farming',
+    age:23,
+    city:'chhindwara'
   }
 
-
-  function del(idx){
-  const copytask = [...task]
-  copytask.splice(idx,1)
-  settask(copytask)
-}
-  return (
-
+localStorage.setItem('data',JSON.stringify(data))    //convert object to string 
+const d=JSON.parse(localStorage.getItem('data'))
+  return(
     <>
-
-    <div className="parent">
-      <div className="child1">
-        <form onSubmit={(e)=>{submmit(e)}}>
-          <h1> Add Notes</h1>
-          <input 
-          type="text"  
-          placeholder="Enter your name" 
-          className="inn"
-          value={title}
-          onChange={(e)=>{
-            settitle(e.target.value)
-          }}
-          
-          />
-          <br />  
-          <input 
-          type="text" 
-          placeholder="Enter your notes"  
-          className="innn"
-          value={details}
-          onChange={(e)=>{
-            setdetails(e.target.value)
-          }}
-        
-          />
-          <br />
-          <button className="g">submit</button>
-        </form>
-      </div>
-
-      <div className="child2">
-      
-      {task.map(function(elem,idx){
-        return <div key={idx} className="child3"><h1>{elem.title}</h1>
-        <p>{elem.details}</p>
-        <button onClick={()=>del(idx)}>delete </button></div>
-        
-      })} 
-      
-      
-      </div>
-      
-    </div>
+    
     </>
   )
 }
