@@ -3,3 +3,8 @@
     padding: 0%;
     box-sizing: 0%;
 }
+input,button{
+    padding: 20px;
+    margin: 10px;
+    
+}

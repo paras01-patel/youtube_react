@@ -54,22 +54,44 @@ import { useState } from "react"
 // export default App
 
 
-//batch adding
+//batch update  
+// function App(){
+
+//   let [num,setnum]=useState(10)
+//   function clicked(){
+//     setnum(pre=>(pre+1))
+//     setnum(pre=>(pre+1))
+//     setnum(pre=>(pre+1))
+
+
+//   }
+//   return(
+//     <>
+
+//     <h1>{num}</h1>
+//     <button onClick={clicked}>click</button>
+//     </>
+//   )
+// }
+// export default App
+
+
+
+
+// from handle 
+
 function App(){
-
-  let [num,setnum]=useState(10)
-  function clicked(){
-    setnum(pre=>(pre+1))
-    setnum(pre=>(pre+1))
-    setnum(pre=>(pre+1))
-
+  function submitt(e){
+    e.preventDefault()
+    console.log("form submittedg")
 
   }
   return(
     <>
-
-    <h1>{num}</h1>
-    <button onClick={clicked}>click</button>
+    <form onSubmit={(e)=>{ submitt(e) }}>
+      <input type="text " placeholder=" enter your name" />
+      <button> submitt</button>
+    </form>
     </>
   )
 }
