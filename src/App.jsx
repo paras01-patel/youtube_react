@@ -2,10 +2,11 @@
 
 import { useState } from "react"
 
+
+
 // import { use, useState } from "react"
 
-// function App(){
-// const [num,write]=useState(0)
+// // const [num,write]=useState(0)
 
 
 // function inn(){
@@ -33,8 +34,7 @@ import { useState } from "react"
 // export default App
 
 // import { use, useState } from "react"
-// function App(){
-
+// 
 
 //   let [read,write]=useState({user:'paras',age:22})
 //   function chh(){
@@ -55,8 +55,7 @@ import { useState } from "react"
 
 
 //batch update  
-// function App(){
-
+// 
 //   let [num,setnum]=useState(10)
 //   function clicked(){
 //     setnum(pre=>(pre+1))
@@ -80,18 +79,109 @@ import { useState } from "react"
 
 // from handle 
 
-function App(){
-  function submitt(e){
-    e.preventDefault()
-    console.log("form submittedg")
+// //   function submitt(e){
+//     e.preventDefault()
+//     console.log("form submittedg")
 
+
+//   }
+
+  
+//   return(
+//     <>
+//     <form onSubmit={(e)=>{ submitt(e) }}>
+//       <input type="text " placeholder=" enter your name" />
+//       <button> submitt</button>
+//     </form>
+//     </>
+//   )
+// }
+// export default App
+
+
+
+
+
+
+// two way data winding 
+
+
+
+
+function App(){
+const[title,settitle]=useState()
+const[details,setdetails]=useState()
+const[task,settask]=useState([])
+
+
+
+
+  function submmit(e){
+    e.preventDefault()
+    const copytask=[...task]
+    copytask.push({title,details})
+    
+    settask(copytask)
+
+
+    settitle('')
+    setdetails('')
+    
   }
-  return(
+
+
+  function del(idx){
+  const copytask = [...task]
+  copytask.splice(idx,1)
+  settask(copytask)
+}
+  return (
+
     <>
-    <form onSubmit={(e)=>{ submitt(e) }}>
-      <input type="text " placeholder=" enter your name" />
-      <button> submitt</button>
-    </form>
+
+    <div className="parent">
+      <div className="child1">
+        <form onSubmit={(e)=>{submmit(e)}}>
+          <h1> Add Notes</h1>
+          <input 
+          type="text"  
+          placeholder="Enter your name" 
+          className="inn"
+          value={title}
+          onChange={(e)=>{
+            settitle(e.target.value)
+          }}
+          
+          />
+          <br />  
+          <input 
+          type="text" 
+          placeholder="Enter your notes"  
+          className="innn"
+          value={details}
+          onChange={(e)=>{
+            setdetails(e.target.value)
+          }}
+        
+          />
+          <br />
+          <button className="g">submit</button>
+        </form>
+      </div>
+
+      <div className="child2">
+      
+      {task.map(function(elem,idx){
+        return <div key={idx} className="child3"><h1>{elem.title}</h1>
+        <p>{elem.details}</p>
+        <button onClick={()=>del(idx)}>delete </button></div>
+        
+      })} 
+      
+      
+      </div>
+      
+    </div>
     </>
   )
 }
