@@ -1,5 +1,7 @@
 // import { useState } from "react"
 
+import { useState } from "react"
+
 // import { use, useState } from "react"
 
 // function App(){
@@ -30,22 +32,44 @@
 // }
 // export default App
 
-import { use, useState } from "react"
+// import { use, useState } from "react"
+// function App(){
+
+
+//   let [read,write]=useState({user:'paras',age:22})
+//   function chh(){
+//     let neww={...read}
+// neww.user='PARAS'
+// neww.age=21
+// write(neww)
+//   }
+//   return(
+//     <>
+//     <h1>hii i am {read.user} and i am {read.age} old </h1>
+//     <button onClick={chh}> change</button>
+    
+//     </>
+//   )
+// }
+// export default App
+
+
+//batch adding
 function App(){
 
+  let [num,setnum]=useState(10)
+  function clicked(){
+    setnum(pre=>(pre+1))
+    setnum(pre=>(pre+1))
+    setnum(pre=>(pre+1))
 
-  let [read,write]=useState({user:'paras',age:22})
-  function chh(){
-    let neww={...read}
-neww.user='PARAS'
-neww.age=21
-write(neww)
+
   }
   return(
     <>
-    <h1>hii i am {read.user} and i am {read.age} old </h1>
-    <button onClick={chh}> change</button>
-    
+
+    <h1>{num}</h1>
+    <button onClick={clicked}>click</button>
     </>
   )
 }
