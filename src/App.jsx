@@ -1,6 +1,7 @@
 // import { useState } from "react"
 
-import { useState } from "react"
+// 
+import { useEffect, useState } from "react"
 
 
 
@@ -216,26 +217,32 @@ import { useState } from "react"
 
 //API application program interface ...
 
-import axios from 'axios'
 
-//with fetch api 
 
-async function getdata(){
-  const res= await fetch('https://jsonplaceholder.typicode.com/todos/1')
-  console.log(res)
-}
 
-//with asios api 
 
-//  async function getdata(){
-//   const res=  await axios('https://jsonplaceholder.typicode.com/todos/1')
 
-// console.log(res)}
 
 function App(){
+  const [num,setnum]=useState(0)
+  const [num2,setnum2]=useState(10)
+
+  useEffect(function(){
+    console.log("use efect is runing")
+  },[num2])
+
   return(
-    <>
-    <button onClick={getdata}>click here</button></>
+  
+  <>
+  
+  <h1> num1{num}</h1>
+  <h1>num2{num2}</h1>
+  <button onClick={()=>{
+    setnum(num+1)
+  }
+  } onDoubleClick={()=>{setnum2(num2+10)}}>click here </button>
+
+  </>
   )
 }
 export default App
