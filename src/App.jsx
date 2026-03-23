@@ -1,7 +1,7 @@
 // import { useState } from "react"
 
 // 
-import { useEffect, useState } from "react"
+// import { useEffect, useState } from "react"
 
 
 
@@ -252,42 +252,79 @@ import { useEffect, useState } from "react"
 
 // gallery project 
 
-import axios from "axios";
+// import axios from "axios";
 // import { useState } from "react";
 
+// function App() {
+//   const [dataa, setdataa] = useState([]);
+
+//   async function getdata() {
+//     const response = await axios.get(
+//       "https://picsum.photos/v2/list?page=2&limit=15"
+//     );
+
+//     setdataa(response.data); // ✅ correct
+//   }
+
+//   let printuserdata = "No user available";
+
+//   if (dataa.length > 0) {
+//     printuserdata = dataa.map((elem, indx) => {
+//       return (
+//         <div key={indx} className="">
+//           <a href={elem.url} target="_blank" rel="noopener noreferrer">
+//           <img src={elem.download_url} alt="" width="200" />
+//           <h2>{elem.author}</h2>
+//           </a>  
+//         </div>
+//       );
+//     });
+//   }
+
+//   return (
+//     <>
+//       <button onClick={getdata} className="bt">
+//         Get Data
+//       </button>
+
+//       <div>{printuserdata}</div>
+//     </>
+//   );
+// }
+
+// export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+//react-router-dom
+
+
+
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./Navbar";
+import Home from "./Home";
+import About from "./About";
+import Contact from "./Contact";
+
 function App() {
-  const [dataa, setdataa] = useState([]);
-
-  async function getdata() {
-    const response = await axios.get(
-      "https://picsum.photos/v2/list?page=2&limit=15"
-    );
-
-    setdataa(response.data); // ✅ correct
-  }
-
-  let printuserdata = "No user available";
-
-  if (dataa.length > 0) {
-    printuserdata = dataa.map((elem, indx) => {
-      return (
-        <div key={indx} className="">
-          <a href={elem.url} target="_blank" rel="noopener noreferrer">
-          <img src={elem.download_url} alt="" width="200" />
-          <h2>{elem.author}</h2>
-          </a>  
-        </div>
-      );
-    });
-  }
-
   return (
     <>
-      <button onClick={getdata} className="bt">
-        Get Data
-      </button>
+      <Navbar />
 
-      <div>{printuserdata}</div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
     </>
   );
 }
