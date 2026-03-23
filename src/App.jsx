@@ -223,26 +223,73 @@ import { useEffect, useState } from "react"
 
 
 
-function App(){
-  const [num,setnum]=useState(0)
-  const [num2,setnum2]=useState(10)
+// function App(){
+//   const [num,setnum]=useState(0)
+//   const [num2,setnum2]=useState(10)
 
-  useEffect(function(){
-    console.log("use efect is runing")
-  },[num2])
+//   useEffect(function(){
+//     console.log("use efect is runing")
+//   },[num2])
 
-  return(
+//   return(
   
-  <>
+//   <>
   
-  <h1> num1{num}</h1>
-  <h1>num2{num2}</h1>
-  <button onClick={()=>{
-    setnum(num+1)
+//   <h1> num1{num}</h1>
+//   <h1>num2{num2}</h1>
+//   <button onClick={()=>{
+//     setnum(num+1)
+//   }
+//   } onDoubleClick={()=>{setnum2(num2+10)}}>click here </button>
+
+//   </>
+//   )
+// }
+// export default App
+
+
+
+
+// gallery project 
+
+import axios from "axios";
+// import { useState } from "react";
+
+function App() {
+  const [dataa, setdataa] = useState([]);
+
+  async function getdata() {
+    const response = await axios.get(
+      "https://picsum.photos/v2/list?page=2&limit=15"
+    );
+
+    setdataa(response.data); // ✅ correct
   }
-  } onDoubleClick={()=>{setnum2(num2+10)}}>click here </button>
 
-  </>
-  )
+  let printuserdata = "No user available";
+
+  if (dataa.length > 0) {
+    printuserdata = dataa.map((elem, indx) => {
+      return (
+        <div key={indx} className="">
+          <a href={elem.url} target="_blank" rel="noopener noreferrer">
+          <img src={elem.download_url} alt="" width="200" />
+          <h2>{elem.author}</h2>
+          </a>  
+        </div>
+      );
+    });
+  }
+
+  return (
+    <>
+      <button onClick={getdata} className="bt">
+        Get Data
+      </button>
+
+      <div>{printuserdata}</div>
+    </>
+  );
 }
-export default App
+
+export default App;
